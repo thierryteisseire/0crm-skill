@@ -1,0 +1,47 @@
+{
+    "name": "@thierryteisseire/0crm-skill",
+    "version": "1.0.0",
+    "description": "Zero CRM API skill for managing contacts, deals, and user profiles via REST API. Simple, fast, and powerful CRM automation with bulk operations and comprehensive documentation.",
+    "main": "SKILL.md",
+    "bin": {
+        "0crm": "./scripts/cli.py",
+        "zerocrm": "./scripts/cli.py"
+    },
+    "scripts": {
+        "test": "python3 scripts/test_api.py",
+        "verify": "python3 scripts/verify.py"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/thierryteisseire/0crm-skill.git"
+    },
+    "keywords": [
+        "agent-skill",
+        "crm",
+        "zero-crm",
+        "contacts",
+        "deals",
+        "sales",
+        "customer-management",
+        "api",
+        "rest-api",
+        "bulk-import",
+        "sales-automation",
+        "contact-management"
+    ],
+    "author": "Thierry Teisseire",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/thierryteisseire/0crm-skill/issues"
+    },
+    "homepage": "https://github.com/thierryteisseire/0crm-skill#readme",
+    "files": [
+        "SKILL.md",
+        "README.md",
+        "LICENSE",
+        "references/",
+        "scripts/",
+        "examples/",
+        "requirements.txt"
+    ]
+}

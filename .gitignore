@@ -1,3 +1,29 @@
 .DS_Store
 node_modules
 .env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# macOS
+._*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test data
+test_data/
+*.log
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
