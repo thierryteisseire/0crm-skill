@@ -1,5 +1,5 @@
 ---
-name: 0crm-skill
+name: zerocrm
 description: Comprehensive Zero CRM API skill for managing contacts, deals, and user profiles via REST API. Supports CRUD operations, bulk imports, and automation workflows. Use for: contact management, deal tracking, sales automation, data migration, CRM integrations, bulk operations.
 ---
 
