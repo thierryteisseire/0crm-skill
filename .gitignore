@@ -27,3 +27,7 @@ test_data/
 dist/
 build/
 *.egg-info/
+
+# Agent skill directories
+.agents/
+.agent/
