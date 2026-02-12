@@ -3,7 +3,7 @@
 > **Simple, fast, and powerful CRM automation** — Programmatically manage contacts, deals, and user profiles with the Zero CRM REST API.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/thierryteisseire/0crm-skill)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/thierryteisseire/0crm-skill)
 
 Interact with the Zero CRM application to automate contact management, deal tracking, and bulk data operations. Perfect for sales automation, data migration, and CRM integrations.
 

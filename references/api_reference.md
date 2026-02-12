@@ -547,4 +547,4 @@ See [../examples/](../examples/) for comprehensive code samples:
 ---
 
 **API Version:** 1.0  
-**Last Updated:** 2024-02-11
+**Last Updated:** 2026-02-12

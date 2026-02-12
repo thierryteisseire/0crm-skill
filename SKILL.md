@@ -708,7 +708,7 @@ curl -H "x-api-key: $ZERO_CRM_API_KEY" \
 
 ---
 
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 **License:** MIT  
 **Author:** Thierry Teisseire
 

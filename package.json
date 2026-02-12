@@ -1,6 +1,6 @@
 {
     "name": "@thierryteisseire/0crm-skill",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Zero CRM API skill for managing contacts, deals, and user profiles via REST API. Simple, fast, and powerful CRM automation with bulk operations and comprehensive documentation.",
     "main": "SKILL.md",
     "bin": {
