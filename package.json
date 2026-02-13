@@ -1,7 +1,7 @@
 {
     "name": "@thierryteisseire/0crm-skill",
-    "version": "1.0.1",
-    "description": "Zero CRM API skill for managing contacts, deals, and user profiles via REST API. Simple, fast, and powerful CRM automation with bulk operations and comprehensive documentation.",
+    "version": "1.1.0",
+    "description": "Comprehensive Zero CRM API skill for managing contacts, deals, tasks and user profiles via REST API. Simple, fast, and powerful CRM automation with bulk operations and comprehensive documentation.",
     "main": "SKILL.md",
     "bin": {
         "0crm": "./scripts/cli.py",
@@ -21,6 +21,7 @@
         "zero-crm",
         "contacts",
         "deals",
+        "tasks",
         "sales",
         "customer-management",
         "api",
@@ -43,5 +44,6 @@
         "scripts/",
         "examples/",
         "requirements.txt"
-    ]
+    ],
+    "dependencies": {}
 }

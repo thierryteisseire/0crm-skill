@@ -14,8 +14,9 @@ Complete reference for the Zero CRM REST API v1.0
 4. [Health & Status](#health--status)
 5. [Contacts API](#contacts-api)
 6. [Deals API](#deals-api)
-7. [User Profile API](#user-profile-api)
-8. [Best Practices](#best-practices)
+7. [Tasks API](#tasks-api)
+8. [User Profile API](#user-profile-api)
+9. [Best Practices](#best-practices)
 
 ---
 
@@ -439,6 +440,109 @@ curl -X DELETE \
 
 ---
 
+## Tasks API
+
+### GET /api/tasks
+
+List all tasks for the authenticated user.
+
+**Query Parameters:**
+- `status`: Filter by status (`todo`, `in_progress`, `done`)
+- `priority`: Filter by priority (`low`, `medium`, `high`)
+
+**Request:**
+```bash
+curl -H "x-api-key: zero_abc123..." \
+  https://vbrsrhfxfv6qk2jbrraym2a2du0qlazt.lambda-url.us-east-1.on.aws/api/tasks?status=todo
+```
+
+**Response (200):**
+```json
+[
+  {
+    "id": "task-uuid",
+    "title": "Follow up with Jane",
+    "description": "Discuss the proposal",
+    "status": "todo",
+    "priority": "high",
+    "due_date": "2024-02-15T10:00:00Z",
+    "contact_id": "contact-uuid",
+    "deal_id": "deal-uuid",
+    "contact_name": "Jane Doe",
+    "deal_title": "Enterprise Contract"
+  }
+]
+```
+
+### POST /api/tasks
+
+Create a new task.
+
+**Request Body:**
+```json
+{
+  "title": "Review contract",
+  "description": "Legal review",
+  "status": "todo",
+  "priority": "medium",
+  "due_date": "2024-02-20",
+  "contact_id": "contact-uuid",
+  "deal_id": "deal-uuid"
+}
+```
+
+**Response (201):**
+```json
+{
+  "id": "new-task-uuid",
+  "title": "Review contract",
+  "status": "todo",
+  ...
+}
+```
+
+### PATCH /api/tasks/:id
+
+Update an existing task.
+
+**Request Body:**
+```json
+{
+  "status": "done",
+  "priority": "low"
+}
+```
+
+**Response (200):**
+```json
+{
+  "id": "task-uuid",
+  "status": "done",
+  ...
+}
+```
+
+### DELETE /api/tasks/:id
+
+Delete a task.
+
+**Response (200):**
+```json
+{
+  "success": true
+}
+```
+
+### GET /api/tasks/by-contact/:contactId
+
+List all tasks for a specific contact.
+
+### GET /api/tasks/by-deal/:dealId
+
+List all tasks for a specific deal.
+
+---
+
 ## User Profile API
 
 ### GET /api/user/profile
@@ -546,5 +650,5 @@ See [../examples/](../examples/) for comprehensive code samples:
 
 ---
 
-**API Version:** 1.0  
-**Last Updated:** 2026-02-12
+**API Version:** 1.1  
+**Last Updated:** 2026-02-13

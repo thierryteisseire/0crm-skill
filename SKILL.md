@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 ---
 name: zerocrm
 description: Zero CRM API skill for managing contacts, deals, and user profiles via REST API. Use for contact management, deal tracking, and sales automation.
 ---
+=======
+name: 0crm-skill
+description: Comprehensive Zero CRM API skill for managing contacts, deals, tasks, and user profiles via REST API. Supports CRUD operations, bulk imports, and automation workflows. Use for: contact management, deal tracking, task organization, sales automation, data migration, CRM integrations, bulk operations.
+
+>>>>>>> b953f2d (Update to v1.1.0: Add Tasks API support)
 
 # Zero CRM API Skill
 
@@ -299,6 +305,78 @@ if response.status_code == 200:
 
 ---
 
+
+### Tasks
+
+#### List All Tasks
+
+```python
+# List all tasks
+response = requests.get(f"{BASE_URL}/api/tasks", headers=headers)
+tasks = response.json()
+
+# Filter by status or priority
+response = requests.get(f"{BASE_URL}/api/tasks?status=todo&priority=high", headers=headers)
+high_priority_tasks = response.json()
+```
+
+**Response:**
+```json
+[
+  {
+    "id": "uuid",
+    "title": "Follow up with Jane",
+    "description": "Discuss the proposal sent last week",
+    "status": "todo",
+    "priority": "high",
+    "due_date": "2024-02-15T10:00:00Z",
+    "contact_id": "uuid",
+    "deal_id": "uuid",
+    "contact_name": "Jane Doe",
+    "deal_title": "Enterprise Contract - Acme Corp"
+  }
+]
+```
+
+#### Create Task
+
+```python
+new_task = {
+    "title": "Review contract",
+    "description": "Legal team needs to review the terms",
+    "status": "todo",
+    "priority": "medium",
+    "due_date": "2024-02-20",
+    "contact_id": "uuid",
+    "deal_id": "uuid"
+}
+
+response = requests.post(f"{BASE_URL}/api/tasks", headers=headers, json=new_task)
+created = response.json()
+```
+
+#### Update Task
+
+```python
+task_id = "uuid-here"
+updates = {"status": "done"}
+
+response = requests.patch(f"{BASE_URL}/api/tasks/{task_id}", headers=headers, json=updates)
+updated = response.json()
+```
+
+#### Get Tasks by Contact or Deal
+
+```python
+# Tasks for a specific contact
+response = requests.get(f"{BASE_URL}/api/tasks/by-contact/{contact_id}", headers=headers)
+
+# Tasks for a specific deal
+response = requests.get(f"{BASE_URL}/api/tasks/by-deal/{deal_id}", headers=headers)
+```
+
+---
+
 ### User Profile
 
 #### Get Current User
@@ -325,6 +403,7 @@ print(f"API Key: {profile['apiKey']}")
 ```
 
 ---
+
 
 ## 🔄 Bulk Operations
 
@@ -708,7 +787,8 @@ curl -H "x-api-key: $ZERO_CRM_API_KEY" \
 
 ---
 
-**Version:** 1.0.1  
+**Version:** 1.1.0  
+
 **License:** MIT  
 **Author:** Thierry Teisseire
 

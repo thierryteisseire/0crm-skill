@@ -27,16 +27,17 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-API_KEY = os.getenv("ZERO_CRM_API_KEY")
 BASE_URL = "https://vbrsrhfxfv6qk2jbrraym2a2du0qlazt.lambda-url.us-east-1.on.aws"
 
-if not API_KEY:
-    print("❌ Error: ZERO_CRM_API_KEY not found")
-    print("Set it in .env file or:")
-    print("  export ZERO_CRM_API_KEY=zero_your_key_here")
-    sys.exit(1)
-
-headers = {"x-api-key": API_KEY, "Content-Type": "application/json"}
+def get_headers():
+    """Get authenticated headers."""
+    api_key = os.getenv("ZERO_CRM_API_KEY")
+    if not api_key:
+        print("❌ Error: ZERO_CRM_API_KEY not found")
+        print("Set it in .env file or:")
+        print("  export ZERO_CRM_API_KEY=zero_your_key_here")
+        sys.exit(1)
+    return {"x-api-key": api_key, "Content-Type": "application/json"}
 
 
 def format_contact(contact):
@@ -74,7 +75,7 @@ def format_deal(deal):
 
 def cmd_contacts_list(args):
     """List all contacts."""
-    response = requests.get(f"{BASE_URL}/api/contacts", headers=headers)
+    response = requests.get(f"{BASE_URL}/api/contacts", headers=get_headers())
 
     if response.status_code == 200:
         contacts = response.json()
@@ -106,7 +107,7 @@ def cmd_contacts_create(args):
 
     response = requests.post(
         f"{BASE_URL}/api/contacts",
-        headers=headers,
+        headers=get_headers(),
         json=contact
     )
 
@@ -124,7 +125,7 @@ def cmd_contacts_delete(args):
     """Delete a contact."""
     response = requests.delete(
         f"{BASE_URL}/api/contacts/{args.id}",
-        headers=headers
+        headers=get_headers()
     )
 
     if response.status_code == 200:
@@ -137,7 +138,7 @@ def cmd_contacts_delete(args):
 
 def cmd_deals_list(args):
     """List all deals."""
-    response = requests.get(f"{BASE_URL}/api/deals", headers=headers)
+    response = requests.get(f"{BASE_URL}/api/deals", headers=get_headers())
 
     if response.status_code == 200:
         deals = response.json()
@@ -177,7 +178,7 @@ def cmd_deals_create(args):
 
     response = requests.post(
         f"{BASE_URL}/api/deals",
-        headers=headers,
+        headers=get_headers(),
         json=deal
     )
 
@@ -212,7 +213,7 @@ def cmd_deals_update(args):
 
     response = requests.patch(
         f"{BASE_URL}/api/deals/{args.id}",
-        headers=headers,
+        headers=get_headers(),
         json=updates
     )
 
@@ -229,7 +230,7 @@ def cmd_deals_delete(args):
     """Delete a deal."""
     response = requests.delete(
         f"{BASE_URL}/api/deals/{args.id}",
-        headers=headers
+        headers=get_headers()
     )
 
     if response.status_code == 200:
@@ -242,7 +243,7 @@ def cmd_deals_delete(args):
 
 def cmd_profile(args):
     """Show user profile."""
-    response = requests.get(f"{BASE_URL}/api/user/profile", headers=headers)
+    response = requests.get(f"{BASE_URL}/api/user/profile", headers=get_headers())
 
     if response.status_code == 200:
         profile = response.json()
@@ -273,7 +274,7 @@ def cmd_test(args):
 
     # Test 2: Authentication
     print("\n2. Testing authentication...")
-    response = requests.get(f"{BASE_URL}/api/user/profile", headers=headers)
+    response = requests.get(f"{BASE_URL}/api/user/profile", headers=get_headers())
 
     if response.status_code == 200:
         data = response.json()
